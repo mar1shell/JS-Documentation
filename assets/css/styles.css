@@ -1,0 +1,344 @@
+/* Theme colors */
+
+:root {
+    --background-dark: #0d1117; /* Dark mode background */
+    --background-light: #ffffff; /* Light mode background */
+    --bar-color: #24292e; /* Topbar & Footer color */
+    --text-primary: #c9d1d9; /* Primary text color for dark mode */
+    --text-secondary: #6e7681; /* Secondary text color */
+    --link-color: #6e7681; /* Link color */
+    --link-hover: yellow; /* Link hover color */
+    --sidebar-background: #161b22; /* Sidebar background color */
+    --sidebar-hover: #21262d; /* Sidebar hover color */
+    --border-color: #30363d; /* Border color */
+    --border-radius: 10px; /* Border radius */
+    --box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.15); /* Box shadow */
+    --bow-shadow-hover: 0 0 5px 5px rgba(255, 255, 255, 0.3); /* Box shadow hover */
+    --code-background: #2d333b; /* Slightly lighter background for code blocks */
+    --code-text-color: #f4f4f4; /* Light text color */
+    --code-border-color: #444d56; /* Border color for code blocks */
+}
+
+/* big elements */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; 
+    /* topbar height so when we access it directly by the sidebar the header dosent hide undder the topbar */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+}
+
+main {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    position: relative;
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        margin: 30px auto;
+    }
+    
+}
+
+#topbar, footer {
+    box-shadow: var(--box-shadow);
+}
+
+/* big classes */
+
+.block {
+    display: block;
+
+}
+
+/* small elements */
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 1.7rem;
+    transition: color 0.3s ease;
+}
+
+hr {
+    margin: 20px auto;
+    width: 80%;
+    transition: width 0.3s ease;
+}
+
+h1:hover + hr {
+    width: 95%;
+}
+
+h1:hover {
+    color: yellow;
+    opacity: 0.9;
+}
+
+h2 {
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 2.3rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-weight: bolder;
+    transition: transform 0.3s ease;
+}
+
+a:hover {
+    transform: scale(1.08);
+    cursor: pointer;
+}
+
+code {
+    display: block;
+    text-align: left;
+    line-height: 2;
+    white-space: pre-line;
+    word-break: normal;
+    word-wrap: normal;
+    background-color: var(--code-background);
+    color: var(--code-text-color);
+    border: 1px solid var(--code-border-color);
+    border-radius: 4px;
+    padding: 15px;
+    overflow-x: auto;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* small classes */
+
+.img-links {
+    filter: invert(0.5);
+    transition: invert 0.8s ease;
+}
+
+.img-links:hover {
+    filter: invert(1);
+}
+
+/***************** body *****************/
+
+/*** topbar ***/
+
+#topbar {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    align-items: center;
+    padding: 10px 40px;
+    opacity: 0.9;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bar-color);
+    transition: box-shadow 0.5s ease, opacity 0.3s ease;
+}
+
+#topbar:hover {
+    opacity: 1;
+    box-shadow: var(--box-shadow-hover);
+}
+
+#topbar #right-topbar {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+#topbar #left-topbar {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+#topbar img {
+    width: 40px;
+    height: 40px;
+}
+
+#topbar a {
+    color: var(--text-primary);
+}
+
+#topbar a:hover {
+    color: var(--link-hover);
+}
+
+@media screen and (max-width: 800px) {
+    #topbar #righ-topbar, #topbar img {
+        margin: auto;
+    }
+
+    #topbar a, #topbar #left-topbar {
+        display: none;
+    } 
+    
+}
+
+/*** main ***/
+
+/* sidebar */
+
+#sidebar {
+    background-color: var(--sidebar-background);
+    position: sticky;  
+    flex: 1;
+    top: 80px;
+    left: 5px;
+    min-width: 260px;
+    height: 90%;
+    padding: 20px 0;
+    transition: 0.3s;
+    border-radius: var(--border-radius);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    display: block;
+    padding: 0;
+    cursor: pointer;
+}
+
+#sidebar ul li:hover {
+    background-color: var(--sidebar-hover);
+    border-radius: var(--border-radius);
+}
+
+#sidebar ul li a {
+    display: block;
+    padding: 10px 15px; 
+}
+
+#sidebar ul li:hover > a {
+    color: var(--text-primary);
+}
+
+@media screen and (max-width: 800px) {
+    #sidebar {
+        display: none;
+    }
+    
+}
+
+/* content */
+
+#content {
+    margin-left: 40px;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: var(--sidebar-background);
+    border-radius: var(--border-radius);
+}
+
+#content p {
+    margin-bottom: 20px;
+    line-height: 2;
+}
+
+#content ul {
+    list-style: square;
+    padding: 0;
+}
+
+#content ul li {
+    margin-left: 50px;
+    padding-bottom: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    #content {
+        margin: auto;
+        padding: auto;
+        text-align: center;
+    }
+
+    #content ul li {
+        margin: auto;
+        padding: auto;
+        text-align: left;
+        font-style: italic;
+    }
+    
+}
+
+/*** footer ***/
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background-color: var(--bar-color);
+    color: var(--text-primary);
+    opacity: 0.9;
+    border-top: 1px solid var(--border-color);
+    transition: box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+footer:hover {
+    box-shadow: var(--box-shadow-hover);
+    opacity: 1.1;
+}
+
+footer a:hover {
+    color: lightseagreen;
+}
+
+footer p {
+    font-size: large;
+}
+
+/* back top arrow */
+
+#back-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5;
+}
+
+#back-top:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+@media screen and (max-width: 800px) { /* hide back top arrow on big screens */
+    #back-top {
+       display:block;
+    }
+    
+}
